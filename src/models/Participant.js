@@ -47,7 +47,16 @@ const participantSchema = new mongoose.Schema({
   numberOfTickets: { type: Number, required: true, default: 1 },
   scannedTickets: { type: Number, default: 0 },
   scannedStatus: [{ type: Boolean, default: false }],
-
+  qrCodes: [
+    {
+      ticketNumber: { type: String, required: true },
+      qrData: { type: String, required: true },
+      qrHash: { type: String, required: true },
+      isUsed: { type: Boolean, default: false },
+      usedAt: { type: Date },
+      scannedBy: { type: String },
+    },
+  ],
   createdAt: { type: Date, default: Date.now },
   updatedAt: { type: Date, default: Date.now },
 });
